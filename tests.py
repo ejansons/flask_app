@@ -16,7 +16,7 @@ class TestBase(TestCase):
         config_name = 'testing'
         app = create_app(config_name)
         app.config.update(
-            SQLALCHEMY_DATABASE_URI='mysql://fa_admin:Flask_app_2017$$@localhost/dreamteam_test'
+            SQLALCHEMY_DATABASE_URI='mysql://Test_fa:Test_fa_2017$$@localhost/test_fa_db'
         )
         return app
 

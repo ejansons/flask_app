@@ -22,20 +22,20 @@ def check_admin():
 @login_required
 def list_departments():
     """
-    List all departments
+    List all sessions
     """
     check_admin()
 
     departments = Department.query.all()
 
     return render_template('admin/departments/departments.html',
-                           departments=departments, title="Departments")
+                           departments=departments, title="Sessions")
 
 @admin.route('/departments/add', methods=['GET', 'POST'])
 @login_required
 def add_department():
     """
-    Add a department to the database
+    Add a session to the database
     """
     check_admin()
 
@@ -49,10 +49,10 @@ def add_department():
             # add department to the database
             db.session.add(department)
             db.session.commit()
-            flash('You have successfully added a new department.')
+            flash('You have successfully added a new session.')
         except:
             # in case department name already exists
-            flash('Error: department name already exists.')
+            flash('Error: session name already exists.')
 
         # redirect to departments page
         return redirect(url_for('admin.list_departments'))
@@ -60,13 +60,13 @@ def add_department():
     # load department template
     return render_template('admin/departments/department.html', action="Add",
                            add_department=add_department, form=form,
-                           title="Add Department")
+                           title="Add Session")
 
 @admin.route('/departments/edit/<int:id>', methods=['GET', 'POST'])
 @login_required
 def edit_department(id):
     """
-    Edit a department
+    Edit a session
     """
     check_admin()
 
@@ -78,7 +78,7 @@ def edit_department(id):
         department.name = form.name.data
         department.description = form.description.data
         db.session.commit()
-        flash('You have successfully edited the department.')
+        flash('You have successfully edited the session.')
 
         # redirect to the departments page
         return redirect(url_for('admin.list_departments'))
@@ -87,7 +87,7 @@ def edit_department(id):
     form.name.data = department.name
     return render_template('admin/departments/department.html', action="Edit",
                            add_department=add_department, form=form,
-                           department=department, title="Edit Department")
+                           department=department, title="Edit Session")
 
 @admin.route('/departments/delete/<int:id>', methods=['GET', 'POST'])
 @login_required
@@ -100,12 +100,12 @@ def delete_department(id):
     department = Department.query.get_or_404(id)
     db.session.delete(department)
     db.session.commit()
-    flash('You have successfully deleted the department.')
+    flash('You have successfully deleted the session.')
 
     # redirect to the departments page
     return redirect(url_for('admin.list_departments'))
 
-    return render_template(title="Delete Department")
+    return render_template(title="Delete Session")
 
 
 # Role Views
@@ -215,7 +215,7 @@ def list_employees():
 @login_required
 def assign_employee(id):
     """
-    Assign a department and a role to an employee
+    Assign a session and a role to an participant
     """
     check_admin()
 
@@ -231,11 +231,11 @@ def assign_employee(id):
         employee.role = form.role.data
         db.session.add(employee)
         db.session.commit()
-        flash('You have successfully assigned a department and role.')
+        flash('You have successfully assigned a session and role.')
 
         # redirect to the roles page
         return redirect(url_for('admin.list_employees'))
 
     return render_template('admin/employees/employee.html',
                            employee=employee, form=form,
-                           title='Assign Employee')
+                           title='Assign Participant')

@@ -2,7 +2,7 @@
 
 {% import "bootstrap/utils.html" as utils %}
 {% extends "base.html" %}
-{% block title %}Employees{% endblock %}
+{% block title %}Particpants{% endblock %}
 {% block body %}
 <div class="content-section">
   <div class="outer">
@@ -11,7 +11,7 @@
         <br/>
         {{ utils.flashed_messages() }}
         <br/>
-        <h1 style="text-align:center;">Employees</h1>
+        <h1 style="text-align:center;">Particpants</h1>
         {% if employees %}
           <hr class="intro-divider">
           <div class="center">
@@ -19,7 +19,7 @@
               <thead>
                 <tr>
                   <th width="15%"> Name </th>
-                  <th width="30%"> Department </th>
+                  <th width="30%"> Session </th>
                   <th width="30%"> Role </th>
                   <th width="15%"> Assign </th>
                 </tr>

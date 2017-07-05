@@ -2,7 +2,7 @@
 
 {% import "bootstrap/utils.html" as utils %}
 {% extends "base.html" %}
-{% block title %}Departments{% endblock %}
+{% block title %}Sessions{% endblock %}
 {% block body %}
 <div class="content-section">
   <div class="outer">
@@ -11,7 +11,7 @@
         <br/>
         {{ utils.flashed_messages() }}
         <br/>
-        <h1 style="text-align:center;">Departments</h1>
+        <h1 style="text-align:center;">Sessions</h1>
         {% if departments %}
           <hr class="intro-divider">
           <div class="center">
@@ -55,12 +55,12 @@
           <div style="text-align: center">
         {% else %}
           <div style="text-align: center">
-            <h3> No departments have been added. </h3>
+            <h3> No sessions have been added. </h3>
             <hr class="intro-divider">
         {% endif %}
           <a href="{{ url_for('admin.add_department') }}" class="btn btn-default btn-lg">
             <i class="fa fa-plus"></i>
-            Add Department
+            Add Session
           </a>
         </div>
       </div>
